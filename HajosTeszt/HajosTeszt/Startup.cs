@@ -25,11 +25,12 @@ namespace HajosTeszt
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseRouting();
             app.UseHttpsRedirection();
+           
+            
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseRouting();
 
 
             //app.UseEndpoints(endpoints =>
