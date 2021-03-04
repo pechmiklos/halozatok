@@ -1,0 +1,107 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    font-weight: bold;
+    text-align: center;
+}
+
+div {
+    border: 1px solid red;
+    border-radius: 25px;
+    padding: 20px;
+    margin: 10px;
+}
+
+.megisfeher {
+    background-color: greenyellow;
+    border-radius: 25px;
+    width: 100px;
+}
+
+.h2 {
+    text-align: center;
+}
+
+.sorrendi {
+    font-style: italic
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+a {
+    background-color: yellowgreen;
+    color: white;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+    a:hover {
+        background-color: hotpink;
+    }
+
+#header {
+    background-color: tomato;
+    padding: 20px;
+}
+
+
+#nav a {
+    flex: 1 1 auto;
+    text-decoration: none;
+    color: black;
+}
+
+#nav {
+    background: lightgreen;
+    padding: 20px;
+}
+
+#article {
+    text-align: left;
+    background: lemonchiffon;
+    padding: 20px;
+    display: flex;
+}
+
+
+#aside {
+    background-color: deepskyblue;
+    padding: 20px;
+}
+
+#footer {
+    background: hotpink;
+    padding: 20px;
+}
+
+
+@media screen and (min-width: 800px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    #main {
+        display: flex;
+    }
+
+    #nav,
+    #header {
+        order: -1;
+    }
+    #footer{display: flex;}
+    #article {
+        flex: 1 1 75%;
+    }
+
+    #aside {
+        flex: 1 1 25%;
+    }
+}
