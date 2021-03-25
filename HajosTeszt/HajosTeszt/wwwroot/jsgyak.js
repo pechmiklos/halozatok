@@ -19,7 +19,7 @@
             let szám = document.createElement("div");
             szám.classList.add("doboz")
             let c = faktorialisR(s - 1) / (faktorialisR(o) * faktorialisR(s - 1 - o))
-            szám.style.background = `rgb(${255-10*c},255,255)`
+            szám.style.background = `rgb(${255-30*c},0,0)`
             sor.appendChild(szám)
            
             szám.innerText = c
