@@ -54,6 +54,7 @@ namespace HajosTeszt.Models
             });
 
 
+
             OnModelCreatingPartial(modelBuilder);
         }
 
