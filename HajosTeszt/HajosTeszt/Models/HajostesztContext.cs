@@ -53,6 +53,7 @@ namespace HajosTeszt.Models
                 entity.Property(e => e.QuestionText).IsRequired();
             });
 
+
             OnModelCreatingPartial(modelBuilder);
         }
 
