@@ -347,4 +347,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-HajostesztContext.cs
+Hajosteszt.Context.cs
+
