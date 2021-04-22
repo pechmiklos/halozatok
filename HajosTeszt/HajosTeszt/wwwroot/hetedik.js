@@ -1,54 +1,72 @@
 ﻿var kérdések;
-var k = 0;
-function letöltés (data) {
-    fetch('/questions.json')
-    .then(response => response.json())
-    .then(data => letöltésBefejeződött(data)
-    );
+var k = 1
+window.onload = kérdésBetöltés(1);
+function kérdésBetöltés(id) {
+    fetch(`/questions/${id}`)
+        .then(response => {
+            if (!response.ok) {
+                console.error(`Hibás válasz: ${response.status}`)
+            }
+            else {
+                return response.json()
+            }
+        })
+        .then(data => kérdésMegjelenítés(data));
+} 
+
+function válaszfeldolgozás(válasz) {
+    if (!válasz.ok) {
+        console.error(`Hibás válasz: ${response.status}`)
+    }
+    else {
+        return válasz.json()
+    }
 }
-function letöltésBefejeződött(d) {
-    console.log("Sikeres letöltés")
-    console.log(d)
-    kérdések = d;
-    kérdésMegjelenítés(0);
-}
-window.onload = letöltés;
 
 function kérdésMegjelenítés(kérdés) {
+    console.log(kérdés);
     document.getElementById("válasz1").style.removeProperty("background");
     document.getElementById("válasz2").style.removeProperty("background");
     document.getElementById("válasz3").style.removeProperty("background");
-    document.getElementById("kérdés_szöveg").innerHTML = kérdések[kérdés].questionText;
-    document.getElementById("válasz1").innerHTML = kérdések[kérdés].answer1;
-    document.getElementById("válasz2").innerHTML = kérdések[kérdés].answer2;
-    document.getElementById("válasz3").innerHTML = kérdések[kérdés].answer3;
-    document.getElementById("kép1").src = "https://szoft1.comeback.hu/hajo/" + kérdések[kérdés].image;
+    document.getElementById("kérdés_szöveg").innerText = kérdés.questionText;
+    document.getElementById("válasz1").innerText = kérdés.answer1;
+    document.getElementById("válasz2").innerText = kérdés.answer2;
+    document.getElementById("válasz3").innerText = kérdés.answer3;
     
+    if (kérdés.image !="") {
+        document.getElementById("kép1").src = "https://szoft1.comeback.hu/hajo/" + kérdés.image;
+    }
+    else {
+        document.getElementById("kép1").src = "";
+    }
+    jóválasz = kérdés.correctAnswer;
 }
 
 function előrekattintás() {
-    k++;
-    if (k == kérdések.length) {
-        k = 0;
-
+    if (k<859) {
+        k++;
     }
-    kérdésMegjelenítés(k);
+    else {
+        k = 1;
+    }
+    
+    kérdésBetöltés(k);
     
 }
 
 function visszakattintás() {
-    if (k > 0) {
+    if (k > 1) {
         k = k - 1;
     }
     else {
-        k = kérdések.length - 1;
+        k = 859;
     }
-    kérdésMegjelenítés(k);
-
+    kérdésBetöltés(k);
 }
 
+
 function válaszok(v) {
-    if (v == kérdések[k].correctAnswer) {
+    if (v == jóválasz) {
         document.getElementById("válasz" + v).style.background = "green";
     }
     else {
