@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HajosTeszt.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -33,5 +34,6 @@ namespace HajosTeszt.Controllers
                 Content = szoveg.ToUpper()
             };
         }
+        
     }
 }
