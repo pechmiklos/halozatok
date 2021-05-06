@@ -92,20 +92,18 @@ function kérdésMegjelenítés() {
 
 function előrekattintás() {
     displayedQuestion++;
-    if (displayedQuestion == questionsInHotList) displayedQuestion = 0;
+    if (displayedQuestion == questionsInHotList) {
+        displayedQuestion = 0;
+    }
+   
     kérdésMegjelenítés()
-    clearTimeout(timeoutHandler)
-    
-    
-    
-    
-    
+     clearTimeout(timeoutHandler)
 }
 
 function visszakattintás() {
     displayedQuestion--;
-    if (displayedQuestion == -1) {
-        displayedQuestion = questionsInHotList-1;
+    if (displayedQuestion < 0) {
+        displayedQuestion = questionsInHotList;
     }
 
     kérdésMegjelenítés()
