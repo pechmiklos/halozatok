@@ -13,6 +13,27 @@
         <button id="addButton">Új vicc felvétele</button>
     </form>
     <script>
+        window.onload = ViccBetoltes;
+        
+        function ViccBetoltes() {
+            fetch('api/jokes')
+                .then(result => {
+                    if (!result.ok) {
+                        console.error(`Hibás letöltés: ${result.status}`);
+                        return null;
+
+                    }
+                    else {
+                        return.result.json();
+                    }
+                })
+                .then(data => {
+                    for (var i = 0; i < data.length; i++) {
+                        document.getElementById("jokeList").innerHTML += data[i].jokeText += "<br/>"
+                    }
+                })
+        }
+
         document.getElementById("addButton").addEventListener("click", () => {
 
             //Ezt az objektumot fogjuk átküldeni
