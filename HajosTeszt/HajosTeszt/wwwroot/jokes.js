@@ -1,29 +1,23 @@
 ﻿
-fetch("api/jokes/count")
-    .then(result => result.text())
-    .then(data => viccBetöltés(data))
-
-function viccBetöltés(darabszám) {
-    for (var i = 1; i < darabszám; i++) {
-        fetch(`api/jokes/${i}`)
-            .then(response => {
-                if (!response.ok) {
-                    console.error(`Hibás válasz: ${response.status}`)
-                }
-                else {
-                    return response.json()
-                }
-                })
-            .then(data => viccMegjelenítés(data))
-
-    }
+function Viccbetoltes() {
+    fetch('api/jokes')
+        .then(result => {
+            if (!result.ok) {
+                console.error(`Hibás letöltés: ${result.status}`);
+            }
+            else {
+                return result.json();
+            }
+        })
+        .then(data => {
+            for (var i = 0; i < data.length; i++) {
+                document.getElementById("jokeList").innerHTML += data[i].jokeText + "<br/>";
+            }
+        })
 }
-
-function viccMegjelenítés(vicc) {
-    console.log(vicc);
-    document.getElementById("jokeList").innerHTML += vicc.jokeText + "<br/>";
-} 
-
+window.onload = () => {
+    Viccbetoltes();
+}
  
 document.getElementById("addButton").addEventListener("click", () => {
 
