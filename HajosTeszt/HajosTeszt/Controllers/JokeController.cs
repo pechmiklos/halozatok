@@ -21,6 +21,16 @@ namespace HajosTeszt.Controllers
             return context.Jokes.ToList();
         }
 
+        [HttpGet]
+        [Route("count")]
+        public int M4() //Tetszőleges metódusnév
+        {
+            FunnyDatabaseContext context = new FunnyDatabaseContext();
+            int viccekSzáma = context.Jokes.Count();
+
+            return viccekSzáma;
+        }
+
         // GET api/jokes/5
         [HttpGet("{id}")]
         public Joke Get(int id)
